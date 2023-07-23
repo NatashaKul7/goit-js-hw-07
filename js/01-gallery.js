@@ -25,24 +25,25 @@ function createMarkup(galleryItems) {
 
 gallery.addEventListener('click', onItemClick);
 
-function onItemClick(e) { 
+function onItemClick(e) {
   e.preventDefault();
 
   // Отримуємо лінк великого зображення в консоль
-    const itemLink = e.target;
-    // const parentItemLink = itemLink.closest('.gallery__link');
-    
-  console.log(itemLink);
+  // const itemLink = e.target;
+  // const parentItemLink = itemLink.closest('.gallery__link');
+
+  console.log(e.target);
 
   const instance = basicLightbox.create(`
-		<img  src="${e.target.dataset.source}">`).show();
+		<img  src="${e.target.dataset.source}">`);
+  instance.show();
 
   
-  gallery.addEventListener('keydown', (e) => { 
-if (e.code === 'Escape') { 
-    instance.close();
-  }
-  });
+    gallery.addEventListener('keydown', (e) => { 
+  if (e.code === 'Escape') { 
+      instance.close();
+    }
+    });
 }
 
 console.log(galleryItems);
