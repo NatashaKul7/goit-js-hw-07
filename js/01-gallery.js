@@ -21,28 +21,28 @@ function createMarkup(galleryItems) {
   </a>
 </li>`;
     }).join('');
-}
-
+  }
 
 gallery.addEventListener('click', onItemClick);
 
 function onItemClick(e) { 
-    e.preventDefault();
-    
+  e.preventDefault();
+
+  // Отримуємо лінк великого зображення в консоль
     const itemLink = e.target;
-    const parentItemLink = itemLink.closest('.gallery__link');
+    // const parentItemLink = itemLink.closest('.gallery__link');
     
-    console.log(parentItemLink);
+  console.log(itemLink);
 
+  const instance = basicLightbox.create(`
+		<img  src="${e.target.dataset.source}">`).show();
 
-    // console.log(galleryItems.href);
-    // console.log(e.target.dataset.source);
+  
+  gallery.addEventListener('keydown', (e) => { 
+if (e.code === 'Escape') { 
+    instance.close();
+  }
+  });
 }
 
-
-
-
-
-// console.log(createMarkup(galleryItems));
-
-// console.log(galleryItems);
+console.log(galleryItems);
