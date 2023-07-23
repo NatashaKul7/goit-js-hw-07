@@ -28,11 +28,11 @@ gallery.addEventListener('click', onItemClick);
 function onItemClick(e) {
   e.preventDefault();
 
-  // Отримуємо лінк великого зображення в консоль
-  // const itemLink = e.target;
-  // const parentItemLink = itemLink.closest('.gallery__link');
-
   console.log(e.target);
+
+  if (e.target.nodeName !== 'IMG') { 
+    return;
+  }
 
   const instance = basicLightbox.create(`
 		<img  src="${e.target.dataset.source}">`);
